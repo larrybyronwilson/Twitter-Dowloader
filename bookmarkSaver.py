@@ -10,6 +10,7 @@ service = Service(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service)
 
 # Open Twitter
+driver.maximize_window()
 driver.get("https://twitter.com")
 time.sleep(1)
 
@@ -33,6 +34,10 @@ time.sleep(1)
 passwordElement = driver.find_element(By.XPATH, "//span[contains(text(), 'Password')]/ancestor::div[2]/following-sibling::div/descendant::div//input")
 passwordElement.send_keys(password)
 passwordElement.send_keys(Keys.ENTER)
+time.sleep(3)
+bookmarks = driver.find_element(By.XPATH, "//span[contains(text(), 'Bookmarks')]/ancestor::div[2]")
+bookmarks.click()
+
 # Keep the browser open for a few seconds
 time.sleep(10)
 
